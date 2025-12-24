@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      html,
+      body {
+        margin: 0;
+        padding: 0;
+      }
+      body {
+        background-color: #fad5a5;
+        display: flex;
+        height: 100vh;
+        justify-content: center;
+        align-items: center;
+        overflow: hidden;
+        flex-direction: column;
+        gap: 32px;
+      }
+
+      #join_form,
+      #get_bmi_form {
+        display: flex;
+        flex-direction: column;
+        gap: 24px;
+      }
+
+      .form_control {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+      }
+
+      .column {
+        display: flex;
+        gap: 40px;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>BMI</h1>
+    <div class="column">
+      <form id="join_form" method="post" action="/join">
+        <div class="form_control">
+          <label for="full_name">Full Name</label>
+          <input type="text" name="full_name" id="full_name" />
+        </div>
+        <div class="form_control">
+          <label for="weight">Weight in kg</label>
+          <input type="text" name="weight" id="weight" />
+        </div>
+        <div class="form_control">
+          <label for="height">Height in meter</label>
+          <input type="text" name="height" id="height" />
+        </div>
+        <button>Join Now</button>
+      </form>
+      <form id="get_bmi_form">
+        <div class="form_control">
+          <label for="get_bmi_full_name">Full Name</label>
+          <input type="text" name="get_bmi_full_name" id="get_bmi_full_name" />
+        </div>
+        <button>Get BMI</button>
+      </form>
+    </div>
+  </body>
+</html>
