@@ -15,6 +15,17 @@ app.use(express.json());
 // Serve static frontend files
 app.use(express.static(path.join(__dirname, "public")));
 
+app.post("/getBmi", async (req, res) => {
+  const { full_name } = req.body;
+  console.log("this is the full name", full_name);
+  const { rows } = await pool.query(
+    `SELECT s.student_name, ROUND(s.weight/(s.height*s.height),2) AS bmi, b.category AS bmi_category FROM students s INNER JOIN bmi_categories b ON (s.weight/(s.height*s.height)) BETWEEN b.min_value AND b.max_value WHERE s.student_name = $1`,
+    [full_name]
+  );
+  console.log("get bmi", rows);
+  res.status(200).json(rows[0]);
+});
+
 app.post("/join", async (req, res) => {
   const { full_name, weight, height } = req.body;
 
